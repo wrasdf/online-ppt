@@ -6,5 +6,7 @@
     "modernizr": "~2.6.2",
     "jquery": "~1.11.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "swiper": "~2.7.0"
+  }
 }

@@ -8,7 +8,7 @@ var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence').use(gulp);
 
 gulp.task('scss', function () {
-    return gulp.src('app/styles/main.scss')
+    return gulp.src('app/styles/*.scss')
         .pipe($.rubySass({
             style: 'expanded',
             precision: 10
