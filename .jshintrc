@@ -17,5 +17,11 @@
     "strict": true,
     "trailing": true,
     "smarttabs": true,
-    "jquery": true
+    "globals":{
+        "document": true,
+        "Swiper": true,
+        "window": true,        
+        "Modernizr": true,
+        "jQuery": true
+  }
 }

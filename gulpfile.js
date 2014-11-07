@@ -54,33 +54,28 @@ gulp.task('html', ['styles', 'scripts'], function () {
         .pipe($.size());
 });
 
-gulp.task('optimizeCommonImages', function () {
-    return gulp.src('app/images/**/*')
+function optimizeImages(src, dist){
+    return gulp.src(src)
         .pipe($.imagemin({
             optimizationLevel: 3,
             progressive: true,
             interlaced: true
         }))
-        .pipe(gulp.dest('dist/images'))
+        .pipe(gulp.dest(dist))
         .pipe($.size());
+}
+
+gulp.task('optimizeCommonImages', function () {
+    return optimizeImages('app/images/**/*', 'dist/images');
 });
 
 gulp.task('optimizeStylesImages', function () {
-    return gulp.src('app/styles/images/**/*')
-        .pipe($.imagemin({
-            optimizationLevel: 3,
-            progressive: true,
-            interlaced: true
-        }))
-        .pipe(gulp.dest('dist/styles/images/'))
-        .pipe($.size());
+    return optimizeImages('app/styles/images/**/*', 'dist/styles/images/');
 });
 
 gulp.task('optimizeImages', function(){
     runSequence('optimizeCommonImages','optimizeStylesImages');
 });
-
-
 
 gulp.task('fonts', function () {
     return $.bowerFiles()
@@ -100,53 +95,24 @@ gulp.task('clean', function () {
 });
 
 gulp.task('connect', function () {
-    var connect = require('connect');
-    var app = connect()
-        .use(require('connect-livereload')({ port: 35729 }))
-        .use(connect.static('app'))
-        .use(connect.static('.tmp'))
-        .use(connect.directory('app'));
-
-    require('http').createServer(app)
-        .listen(9000)
-        .on('listening', function () {
-            console.log('Started connect web server on http://localhost:9000');
-        });
+    $.connect.server({
+        root: ['app', '.tmp'],
+        port: 9000,
+        server: '0.0.0.0',
+        livereload: true
+    });
 });
 
 gulp.task('connect:dist', function () {
-    var connect = require('connect');
-    var app = connect()
-        .use(require('connect-livereload')({ port: 35729 }))
-        .use(connect.static('dist'))
-        .use(connect.directory('dist'));
-
-    require('http').createServer(app)
-        .listen(9000)
-        .on('listening', function () {
-            console.log('Started connect web server on http://localhost:9000');
-        });
+    $.connect.server({
+        root: ['dist'],
+        port: 9000,
+        server: '0.0.0.0',
+        livereload: true
+    });
 });
 
-// inject bower components
-gulp.task('wiredep', function () {
-    var wiredep = require('wiredep').stream;
-
-    gulp.src('app/styles/*.scss')
-        .pipe(wiredep({
-            directory: 'app/bower_components'
-        }))
-        .pipe(gulp.dest('app/styles'));
-
-    gulp.src('app/*.html')
-        .pipe(wiredep({
-            directory: 'app/bower_components',
-            exclude: ['bootstrap-sass-official']
-        }))
-        .pipe(gulp.dest('app'));
-});
-
-gulp.task('watch', ['connect', 'serve'], function () {
+gulp.task('watch', function () {
     var server = $.livereload();
 
     // watch for changes
@@ -163,7 +129,6 @@ gulp.task('watch', ['connect', 'serve'], function () {
     gulp.watch('app/styles/**/*.scss', ['styles']);
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/images/**/*', ['images']);
-    gulp.watch('bower.json', ['wiredep']);
 });
 
 
@@ -203,11 +168,11 @@ gulp.task('default', ['clean'], function () {
     gulp.start('build');
 });
 
-gulp.task('serve', ['connect', 'styles'], function () {
+gulp.task('serve', ['connect', 'styles', 'watch'], function () {
     require('opn')('http://localhost:9000');
 });
 
-gulp.task('serve:dist', ['connect:dist', 'styles'], function () {
+gulp.task('serve:dist', ['connect:dist', 'build', 'watch'], function () {
     require('opn')('http://localhost:9000');
 });
 
