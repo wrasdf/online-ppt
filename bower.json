@@ -7,6 +7,7 @@
     "jquery": "~1.11.0"
   },
   "devDependencies": {
-    "swiper": "~2.7.0"
+    "swiper": "~2.7.0",
+    "animation-css": "git@github.com:daneden/animate.css.git"
   }
 }

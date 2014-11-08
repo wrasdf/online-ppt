@@ -1,3 +1,14 @@
 @import "../bower_components/swiper/src/idangerous.swiper.css";
+@import "../bower_components/animation-css/animate.css";
 
 @import "./mobile/common.scss";
+
+
+.swiper-slide {
+	.description{
+		visibility: hidden;
+	}
+	.description.show {
+		visibility: visible;	
+	}
+}
