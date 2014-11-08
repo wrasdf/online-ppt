@@ -21,6 +21,7 @@
         "Swiper": true,
         "window": true,        
         "Modernizr": true,
-        "jQuery": true
+        "jQuery": true,
+        "$": true
   }
 }

@@ -26,27 +26,15 @@ gulp.task('stylesImages', function(){
 
 gulp.task('styles', ['scss', 'stylesImages']);
 
-gulp.task('scripts', function () {
-    return gulp.src('app/scripts/**/*.js')
-        .pipe($.jshint())
-        .pipe($.jshint.reporter(require('jshint-stylish')))
-        .pipe($.size());
-});
+gulp.task('html', ['styles', 'jshint'], function () {
 
-gulp.task('html', ['styles', 'scripts'], function () {
-    var jsFilter = $.filter('**/*.js');
-    var cssFilter = $.filter('**/*.css');
     var htmlFilter = $.filter('**/*.html');
-
+    var assets = $.useref.assets({searchPath: '{.tmp,app}'});
     return gulp.src('app/*.html')
-        .pipe($.useref.assets({searchPath: '{.tmp,app}'}))
-        .pipe(jsFilter)
-        .pipe($.uglify())
-        .pipe(jsFilter.restore())
-        .pipe(cssFilter)
-        .pipe($.csso())
-        .pipe(cssFilter.restore())
-        .pipe($.useref.restore())
+        .pipe(assets)
+        .pipe($.if('*.js', $.uglify()))
+        .pipe($.if('*.css', $.minifyCss()))
+        .pipe(assets.restore())
         .pipe($.useref())
         .pipe(htmlFilter)
         .pipe($.htmlmin({collapseWhitespace: true}))
@@ -133,8 +121,8 @@ gulp.task('watch', function () {
 
 
 
-// js lint
-gulp.task('jslint', function() {
+// js hint
+gulp.task('jshint', function() {
   return gulp.src('./app/scripts/**/*.js')
     .pipe($.jshint('.jshintrc'))
     .pipe($.jshint.reporter('jshint-stylish'))
@@ -157,7 +145,7 @@ gulp.task('jsut', function() {
 });
 
 gulp.task('test', function(){    
-    runSequence('jslint', 'jsut');
+    runSequence('jshint', 'jsut');
 });
 
 gulp.task('build', function(){
@@ -165,14 +153,14 @@ gulp.task('build', function(){
 });
 
 gulp.task('default', ['clean'], function () {
-    gulp.start('build');
+    gulp.start('serve');
 });
 
-gulp.task('serve', ['connect', 'styles', 'watch'], function () {
+gulp.task('serve', ['styles', 'connect', 'watch'], function () {
     require('opn')('http://localhost:9000');
 });
 
-gulp.task('serve:dist', ['connect:dist', 'build', 'watch'], function () {
+gulp.task('serve:dist', ['build', 'connect:dist', 'watch'], function () {
     require('opn')('http://localhost:9000');
 });
 
