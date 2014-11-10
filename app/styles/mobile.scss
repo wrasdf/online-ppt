@@ -3,6 +3,13 @@
 
 @import "./mobile/common.scss";
 
+.animated {
+  -webkit-animation-duration: 0.8s;
+  animation-duration: 0.8s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
 .swiper-slide {
 	.description{
 		visibility: hidden;
