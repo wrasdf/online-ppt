@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "swiper": "~2.7.0",
-    "animation-css": "git@github.com:daneden/animate.css.git"
+    "animation-css": "git@github.com:daneden/animate.css.git",
+    "html2canvas": "~0.4.1"
   }
 }

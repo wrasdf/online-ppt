@@ -5,7 +5,13 @@
         <title>Online PPT</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- build:css styles/mobile.css -->
+
+        <!-- build:css styles/mobile/default/mobile-vendor.css -->
+        <link rel="stylesheet" href="bower_components/swiper/src/idangerous.swiper.css">
+        <link rel="stylesheet" href="bower_components/animation-css/animate.css">
+        <!-- endbuild -->
+
+        <!-- build:css({.tmp,app}) styles/mobile/default/mobile.css -->
         <link rel="stylesheet" href="styles/mobile/default/mobile-default.css">
         <!-- endbuild -->
     </head>
@@ -37,13 +43,13 @@
             </div>            
         </div>
 
-        <!-- build:js scripts/vendor.js -->
+        <!-- build:js scripts/mobile/mobile-vendor.js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/swiper/dist/idangerous.swiper.js"></script>
         <!-- endbuild -->
         
-        <!-- build:js scripts/mobile.js -->
-        <script src="scripts/mobile/main.js"></script>
+        <!-- build:js scripts/mobile/mobile.js -->
+        <script src="scripts/mobile/mobile.js"></script>
         <!-- endbuild -->
 </body>
 </html>

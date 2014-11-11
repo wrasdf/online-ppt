@@ -8,7 +8,7 @@ var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence').use(gulp);
 
 function compileScssFile(srcFiles, destPath) {
-   return gulp.src(srcFiles)
+    return gulp.src(srcFiles)
         .pipe($.rubySass({
             style: 'expanded',
             precision: 10
@@ -35,9 +35,17 @@ function optimizeImages(src, dist){
         .pipe($.size());
 }
 
+function connectServer(rootPath){
+    $.connect.server({
+        root: rootPath,
+        port: 9000,
+        server: '0.0.0.0',
+        livereload: true
+    });
+}
 
 gulp.task('desktopScss', function () {
-    return compileScssFile('app/styles/desktop/main.scss', '.tmp/styles/desktop/');
+    return compileScssFile('app/styles/desktop/edit.scss', '.tmp/styles/desktop/');
 });
 
 gulp.task('mobileDefaultScss', function () {
@@ -54,35 +62,31 @@ gulp.task('styleMobileDefaultThemeImages', function(){
 
 gulp.task('styles', ['desktopScss', 'styleDesktopImages', 'mobileDefaultScss', 'styleMobileDefaultThemeImages']);
 
-gulp.task('html', ['styles', 'jshint'], function () {
-
-    var htmlFilter = $.filter('**/*.html');
-    var assets = $.useref.assets({searchPath: '{.tmp,app}'});
-    return gulp.src('app/*.html')
-        .pipe(assets)
-        .pipe($.if('*.js', $.uglify()))
-        .pipe($.if('*.css', $.minifyCss()))
-        .pipe(assets.restore())
-        .pipe($.useref())
-        .pipe(htmlFilter)
-        .pipe($.htmlmin({collapseWhitespace: true}))
-        .pipe(gulp.dest('dist'))
-        .pipe($.size());
+gulp.task('usemin', function() {
+  gulp.src('./app/*.html')
+    .pipe($.usemin({
+      css: [$.minifyCss(), 'concat'],
+      html: [$.htmlmin({collapseWhitespace: true})],
+      js: [$.uglify(), $.rev()]
+    }))
+    .pipe(gulp.dest('dist/'))
+    .pipe($.size());
 });
+
 
 gulp.task('optimizeCommonImages', function () {
     return optimizeImages('app/images/**/*', 'dist/images');
 });
 
 gulp.task('optimizeDesktopImages', function () {
-    return optimizeImages('app/styles/desktop/images/**/*', 'dist/styles/desktop/images/');
+    return optimizeImages('app/styles/desktop/images/**/*', 'dist/styles/desktop/images');
 });
 
 gulp.task('optimizeMobileDefaultThemeImages', function () {
-    return optimizeImages('app/styles/mobile/default/images/**/*', 'dist/styles/mobile/default/images/');
+    return optimizeImages('app/styles/mobile/default/images/**/*', 'dist/styles/mobile/default/images');
 });
 
-gulp.task('optimizeImages', function(){
+gulp.task('optimizeAllImages', function(){
     runSequence('optimizeCommonImages','optimizeDesktopImages','optimizeMobileDefaultThemeImages');
 });
 
@@ -101,24 +105,6 @@ gulp.task('extras', function () {
 
 gulp.task('clean', function () {
     return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.clean());
-});
-
-gulp.task('connect', function () {
-    $.connect.server({
-        root: ['app', '.tmp'],
-        port: 9000,
-        server: '0.0.0.0',
-        livereload: true
-    });
-});
-
-gulp.task('connect:dist', function () {
-    $.connect.server({
-        root: ['dist'],
-        port: 9000,
-        server: '0.0.0.0',
-        livereload: true
-    });
 });
 
 gulp.task('watch', function () {
@@ -163,26 +149,36 @@ gulp.task('jsut', function() {
     });
 });
 
+gulp.task('connect', function () {
+    connectServer(['app', '.tmp']);
+});
+
+gulp.task('connect:dist', function () {
+    connectServer(['dist']);
+});
+
 gulp.task('test', function(){    
     runSequence('jshint', 'jsut');
 });
 
 gulp.task('build', function(){
-    runSequence('optimizeImages','html', 'fonts', 'extras');
+    runSequence('optimizeAllImages', 'styles', 'jshint', 'jsut', 'usemin', 'fonts', 'extras');
+});
+
+gulp.task('serve', function () {
+    runSequence('clean', 'styles', 'connect', 'watch', function(){
+        require('opn')('http://localhost:9000');    
+    });
+});
+
+gulp.task('serve:dist', function () {
+    runSequence('clean', 'build', 'connect:dist', 'watch', function(){
+        require('opn')('http://localhost:9000');
+    });
 });
 
 gulp.task('default', ['clean'], function () {
     gulp.start('serve');
 });
-
-gulp.task('serve', ['styles', 'connect', 'watch'], function () {
-    require('opn')('http://localhost:9000');
-});
-
-gulp.task('serve:dist', ['build', 'connect:dist', 'watch'], function () {
-    require('opn')('http://localhost:9000');
-});
-
-
 
 
