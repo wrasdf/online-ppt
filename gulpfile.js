@@ -122,8 +122,8 @@ gulp.task('watch', function () {
     });
 
     gulp.watch('app/styles/**/*.scss', ['styles']);
-    gulp.watch('app/scripts/**/*.js', ['scripts']);
-    gulp.watch('app/images/**/*', ['images']);
+    gulp.watch('app/scripts/**/*.js');
+    gulp.watch('app/images/**/*');
 });
 
 // js hint

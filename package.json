@@ -27,7 +27,6 @@
     "gulp-minify-css": "^0.3.11",
     "gulp-rev": "^2.0.1",
     "gulp-ruby-sass": "^0.4.3",
-    "gulp-sass": "^1.1.0",
     "gulp-size": "^0.3.0",
     "gulp-uglify": "^0.2.1",
     "gulp-usemin": "^0.3.8",
