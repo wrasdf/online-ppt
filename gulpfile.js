@@ -45,45 +45,57 @@ function connectServer(rootPath){
 }
 
 gulp.task('desktopScss', function () {
-    return compileScssFile('app/styles/desktop/edit.scss', '.tmp/styles/desktop/');
+    return compileScssFile('app/desktop/styles/edit.scss', '.tmp/desktop/styles/');
 });
 
 gulp.task('mobileDefaultScss', function () {
-    return compileScssFile('app/styles/mobile/default/mobile-default.scss','.tmp/styles/mobile/default/');
+    return compileScssFile('app/mobile/styles/default/mobile-default.scss','.tmp/mobile/styles/default/');
 });
 
 gulp.task('styleDesktopImages', function(){
-    return copyImages('app/styles/desktop/images/**/*','.tmp/styles/desktop/images/');
+    return copyImages('app/desktop/styles/images/**/*','.tmp/desktop/styles/images/');
 });
 
 gulp.task('styleMobileDefaultThemeImages', function(){
-    return copyImages('app/styles/mobile/default/images/**/*','.tmp/styles/mobile/default/images/');
+    return copyImages('app/mobile/styles/default/images/**/*','.tmp/mobile/styles/default/images/');
 });
 
 gulp.task('styles', ['desktopScss', 'styleDesktopImages', 'mobileDefaultScss', 'styleMobileDefaultThemeImages']);
 
 gulp.task('usemin', function() {
-  gulp.src('./app/*.html')
-    .pipe($.usemin({
-      css: [$.minifyCss(), 'concat'],
-      html: [$.htmlmin({collapseWhitespace: true})],
-      js: [$.uglify(), $.rev()]
-    }))
-    .pipe(gulp.dest('dist/'))
-    .pipe($.size());
+
+    gulp.src('./app/desktop/*.html')
+        .pipe($.usemin({
+          css: [$.minifyCss(), 'concat'],
+          html: [$.htmlmin({collapseWhitespace: true})],
+          js: [$.uglify(), $.rev()]
+        }))
+        .pipe(gulp.dest('dist/desktop'))
+        .pipe($.size());
+
+    gulp.src('./app/mobile/*.html')
+        .pipe($.usemin({
+          css: [$.minifyCss(), 'concat'],
+          html: [$.htmlmin({collapseWhitespace: true})],
+          js: [$.uglify(), $.rev()]
+        }))
+        .pipe(gulp.dest('dist/mobile'))
+        .pipe($.size());
+
 });
 
 
 gulp.task('optimizeCommonImages', function () {
-    return optimizeImages('app/images/**/*', 'dist/images');
+    optimizeImages('app/desktop/images/**/*', 'dist/desktop/images');
+    optimizeImages('app/mobile/images/**/*', 'dist/mobile/images');
 });
 
 gulp.task('optimizeDesktopImages', function () {
-    return optimizeImages('app/styles/desktop/images/**/*', 'dist/styles/desktop/images');
+    optimizeImages('app/desktop/styles/images/**/*', 'dist/desktop/styles/images');
 });
 
 gulp.task('optimizeMobileDefaultThemeImages', function () {
-    return optimizeImages('app/styles/mobile/default/images/**/*', 'dist/styles/mobile/default/images');
+    optimizeImages('app/mobile/styles/default/images/**/*', 'dist/mobile/styles/default/images');
 });
 
 gulp.task('optimizeAllImages', function(){
@@ -91,11 +103,18 @@ gulp.task('optimizeAllImages', function(){
 });
 
 gulp.task('fonts', function () {
-    return $.bowerFiles()
+    $.bowerFiles()
         .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
         .pipe($.flatten())
-        .pipe(gulp.dest('dist/fonts'))
+        .pipe(gulp.dest('dist/desktop/styles/fonts'))
         .pipe($.size());
+
+    $.bowerFiles()
+        .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
+        .pipe($.flatten())
+        .pipe(gulp.dest('dist/mobile/styles/default/fonts'))
+        .pipe($.size());
+
 });
 
 gulp.task('extras', function () {
@@ -167,7 +186,7 @@ gulp.task('build', function(){
 
 gulp.task('serve', function () {
     runSequence('clean', 'styles', 'connect', 'watch', function(){
-        require('opn')('http://localhost:9000');    
+        require('opn')('http://localhost:9000/mobile/');    
     });
 });
 

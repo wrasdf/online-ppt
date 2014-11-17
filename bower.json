@@ -9,6 +9,9 @@
   "devDependencies": {
     "swiper": "~2.7.0",
     "animation-css": "git@github.com:daneden/animate.css.git",
-    "html2canvas": "~0.4.1"
+    "html2canvas": "~0.4.1",
+    "backbone": "~1.1.2",
+    "backbone.marionette": "~2.2.2",
+    "handlebars": "~2.0.0"
   }
 }
