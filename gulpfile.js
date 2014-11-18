@@ -141,7 +141,9 @@ gulp.task('watch', function () {
 
     gulp.watch('app/desktop/styles/**/*.scss', ['styles']);
     gulp.watch('app/mobile/styles/**/*.scss', ['styles']);
+    gulp.watch('app/desktop/scripts/*.js');
     gulp.watch('app/desktop/scripts/**/*.js');
+    gulp.watch('app/mobile/scripts/*.js');
     gulp.watch('app/mobile/scripts/**/*.js');
     gulp.watch('app/desktop/images/**/*');
     gulp.watch('app/mobile/images/**/*');

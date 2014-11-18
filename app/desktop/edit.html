@@ -10,19 +10,34 @@
         <!-- endbuild -->
     </head>
     <body>
+
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
         
-        <div class="test">asdfsaf</div>
+        <div class="wrapper"></div>
 
-        <button id="convert">转化</button>
+        <script id="layout-view-template" type="text/template">
+            <header></header>
+            <section class="content">
+                <nav id="nav"></nav>
+                <section id="dashboard"></section>
+            </section>
+        </script>
 
+        <script id="nav-item-view" type="text/template">
+                <%= name %>
+                <%= age %>
+        </script
 
 
         <!-- build:js scripts/edit-vendor.js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/handlebars/handlebars.js"></script>
+        <script src="../bower_components/underscore/underscore.js"></script>
+        <script src="../bower_components/backbone/backbone.js"></script>
+        <script src="../bower_components/backbone.marionette/lib/backbone.marionette.js"></script>        
+        <script src="../bower_components/backbone.wreqr/lib/backbone.wreqr.js"></script>
         <script src="../bower_components/html2canvas/build/html2canvas.js"></script>
         <!-- endbuild -->
         

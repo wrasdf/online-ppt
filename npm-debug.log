@@ -1,9 +1,13 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'bower', 'gulp', '-g' ]
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'generator-backbone-gulp-fullstack' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.33
-4 verbose cache add [ 'bower', null ]
-5 verbose cache add name=undefined spec="bower" args=["bower",null]
+4 verbose cache add [ 'generator-backbone-gulp-fullstack', null ]
+5 verbose cache add name=undefined spec="generator-backbone-gulp-fullstack" args=["generator-backbone-gulp-fullstack",null]
 6 verbose parsed url { protocol: null,
 6 verbose parsed url   slashes: null,
 6 verbose parsed url   auth: null,
@@ -13,427 +17,73 @@
 6 verbose parsed url   hash: null,
 6 verbose parsed url   search: null,
 6 verbose parsed url   query: null,
-6 verbose parsed url   pathname: 'bower',
-6 verbose parsed url   path: 'bower',
-6 verbose parsed url   href: 'bower' }
-7 verbose cache add [ 'gulp', null ]
-8 verbose cache add name=undefined spec="gulp" args=["gulp",null]
-9 verbose parsed url { protocol: null,
-9 verbose parsed url   slashes: null,
-9 verbose parsed url   auth: null,
-9 verbose parsed url   host: null,
-9 verbose parsed url   port: null,
-9 verbose parsed url   hostname: null,
-9 verbose parsed url   hash: null,
-9 verbose parsed url   search: null,
-9 verbose parsed url   query: null,
-9 verbose parsed url   pathname: 'gulp',
-9 verbose parsed url   path: 'gulp',
-9 verbose parsed url   href: 'gulp' }
-10 silly lockFile 206e3ce5-bower bower
-11 verbose lock bower /Users/iKerry/.npm/206e3ce5-bower.lock
-12 silly lockFile 9750c68d-gulp gulp
-13 verbose lock gulp /Users/iKerry/.npm/9750c68d-gulp.lock
-14 silly lockFile 206e3ce5-bower bower
-15 silly lockFile 206e3ce5-bower bower
-16 silly lockFile 9750c68d-gulp gulp
-17 silly lockFile 9750c68d-gulp gulp
-18 verbose addNamed [ 'bower', '' ]
-19 verbose addNamed [ null, '*' ]
-20 silly lockFile 1240aab1-bower bower@
-21 verbose lock bower@ /Users/iKerry/.npm/1240aab1-bower.lock
-22 verbose addNamed [ 'gulp', '' ]
-23 verbose addNamed [ null, '*' ]
-24 silly lockFile 72f4391e-gulp gulp@
-25 verbose lock gulp@ /Users/iKerry/.npm/72f4391e-gulp.lock
-26 silly addNameRange { name: 'bower', range: '*', hasData: false }
-27 silly addNameRange { name: 'gulp', range: '*', hasData: false }
-28 verbose request where is /bower
-29 verbose request registry https://registry.npmjs.org/
-30 verbose request id 2c5cd07073ed45f8
-31 verbose url raw /bower
-32 verbose url resolving [ 'https://registry.npmjs.org/', './bower' ]
-33 verbose url resolved https://registry.npmjs.org/bower
-34 verbose request where is https://registry.npmjs.org/bower
-35 info trying registry request attempt 1 at 23:13:49
-36 verbose etag "E6RX7PHVG3Z88XPFXE90YNP2S"
-37 http GET https://registry.npmjs.org/bower
-38 verbose request where is /gulp
-39 verbose request registry https://registry.npmjs.org/
-40 verbose url raw /gulp
-41 verbose url resolving [ 'https://registry.npmjs.org/', './gulp' ]
-42 verbose url resolved https://registry.npmjs.org/gulp
-43 verbose request where is https://registry.npmjs.org/gulp
-44 info trying registry request attempt 1 at 23:13:49
-45 verbose etag "2589FWDBOKQ5NS0TEFOCZ9ZG2"
-46 http GET https://registry.npmjs.org/gulp
-47 http 304 https://registry.npmjs.org/gulp
-48 silly registry.get cb [ 304,
-48 silly registry.get   { date: 'Wed, 12 Nov 2014 15:13:51 GMT',
-48 silly registry.get     server: 'Apache',
-48 silly registry.get     via: '1.1 varnish',
-48 silly registry.get     'last-modified': 'Wed, 12 Nov 2014 15:13:47 GMT',
-48 silly registry.get     'cache-control': 'max-age=60',
-48 silly registry.get     etag: '"2589FWDBOKQ5NS0TEFOCZ9ZG2"',
-48 silly registry.get     age: '17',
-48 silly registry.get     'x-served-by': 'cache-dfw1825-DFW',
-48 silly registry.get     'x-cache': 'HIT',
-48 silly registry.get     'x-cache-hits': '2',
-48 silly registry.get     'x-timer': 'S1415805231.189681,VS0,VE0',
-48 silly registry.get     vary: 'Accept',
-48 silly registry.get     'content-length': '0',
-48 silly registry.get     'keep-alive': 'timeout=10, max=50',
-48 silly registry.get     connection: 'Keep-Alive' } ]
-49 verbose etag https://registry.npmjs.org/gulp from cache
-50 silly addNameRange number 2 { name: 'gulp', range: '*', hasData: true }
-51 silly addNameRange versions [ 'gulp',
-51 silly addNameRange   [ '0.0.1',
-51 silly addNameRange     '0.0.2',
-51 silly addNameRange     '0.0.3',
-51 silly addNameRange     '0.0.4',
-51 silly addNameRange     '0.0.5',
-51 silly addNameRange     '0.0.7',
-51 silly addNameRange     '0.0.8',
-51 silly addNameRange     '0.0.9',
-51 silly addNameRange     '0.1.0',
-51 silly addNameRange     '0.2.0',
-51 silly addNameRange     '1.0.0',
-51 silly addNameRange     '1.1.0',
-51 silly addNameRange     '1.2.0',
-51 silly addNameRange     '1.2.1',
-51 silly addNameRange     '2.0.0',
-51 silly addNameRange     '2.0.1',
-51 silly addNameRange     '2.1.0',
-51 silly addNameRange     '2.2.0',
-51 silly addNameRange     '2.3.0',
-51 silly addNameRange     '2.4.0',
-51 silly addNameRange     '2.4.1',
-51 silly addNameRange     '2.6.0',
-51 silly addNameRange     '2.6.1',
-51 silly addNameRange     '2.7.0',
-51 silly addNameRange     '3.0.0',
-51 silly addNameRange     '3.1.1',
-51 silly addNameRange     '3.1.2',
-51 silly addNameRange     '3.1.3',
-51 silly addNameRange     '3.1.4',
-51 silly addNameRange     '3.2.0',
-51 silly addNameRange     '3.2.1',
-51 silly addNameRange     '3.2.2',
-51 silly addNameRange     '3.2.3',
-51 silly addNameRange     '3.2.4',
-51 silly addNameRange     '3.2.5',
-51 silly addNameRange     '3.3.0',
-51 silly addNameRange     '3.3.1',
-51 silly addNameRange     '3.3.2',
-51 silly addNameRange     '3.3.4',
-51 silly addNameRange     '3.4.0',
-51 silly addNameRange     '3.5.0',
-51 silly addNameRange     '3.5.1',
-51 silly addNameRange     '3.5.2',
-51 silly addNameRange     '3.5.5',
-51 silly addNameRange     '3.5.6',
-51 silly addNameRange     '3.6.0',
-51 silly addNameRange     '3.6.1',
-51 silly addNameRange     '3.6.2',
-51 silly addNameRange     '3.7.0',
-51 silly addNameRange     '3.8.0',
-51 silly addNameRange     '3.8.1',
-51 silly addNameRange     '3.8.2',
-51 silly addNameRange     '3.8.3',
-51 silly addNameRange     '3.8.4',
-51 silly addNameRange     '3.8.5',
-51 silly addNameRange     '3.8.6',
-51 silly addNameRange     '3.8.7',
-51 silly addNameRange     '3.8.8',
-51 silly addNameRange     '3.8.9',
-51 silly addNameRange     '3.8.10' ] ]
-52 verbose addNamed [ 'gulp', '3.8.10' ]
-53 verbose addNamed [ '3.8.10', '3.8.10' ]
-54 silly lockFile f843d0d7-gulp-3-8-10 gulp@3.8.10
-55 verbose lock gulp@3.8.10 /Users/iKerry/.npm/f843d0d7-gulp-3-8-10.lock
-56 silly lockFile f843d0d7-gulp-3-8-10 gulp@3.8.10
-57 silly lockFile f843d0d7-gulp-3-8-10 gulp@3.8.10
-58 silly lockFile 72f4391e-gulp gulp@
-59 silly lockFile 72f4391e-gulp gulp@
-60 http 304 https://registry.npmjs.org/bower
-61 silly registry.get cb [ 304,
-61 silly registry.get   { date: 'Wed, 12 Nov 2014 15:13:51 GMT',
-61 silly registry.get     server: 'Apache',
-61 silly registry.get     via: '1.1 varnish',
-61 silly registry.get     'last-modified': 'Wed, 12 Nov 2014 15:13:51 GMT',
-61 silly registry.get     'cache-control': 'max-age=60',
-61 silly registry.get     etag: '"E6RX7PHVG3Z88XPFXE90YNP2S"',
-61 silly registry.get     age: '0',
-61 silly registry.get     'x-served-by': 'cache-dfw1827-DFW',
-61 silly registry.get     'x-cache': 'HIT',
-61 silly registry.get     'x-cache-hits': '1',
-61 silly registry.get     'x-timer': 'S1415805231.190087,VS0,VE42',
-61 silly registry.get     vary: 'Accept',
-61 silly registry.get     'content-length': '0',
-61 silly registry.get     'keep-alive': 'timeout=10, max=50',
-61 silly registry.get     connection: 'Keep-Alive' } ]
-62 verbose etag https://registry.npmjs.org/bower from cache
-63 silly addNameRange number 2 { name: 'bower', range: '*', hasData: true }
-64 silly addNameRange versions [ 'bower',
-64 silly addNameRange   [ '0.1.0',
-64 silly addNameRange     '0.1.2',
-64 silly addNameRange     '0.1.3',
-64 silly addNameRange     '0.2.0',
-64 silly addNameRange     '0.3.0',
-64 silly addNameRange     '0.3.1',
-64 silly addNameRange     '0.3.2',
-64 silly addNameRange     '0.4.0',
-64 silly addNameRange     '0.5.0',
-64 silly addNameRange     '0.5.1',
-64 silly addNameRange     '0.6.0',
-64 silly addNameRange     '0.6.1',
-64 silly addNameRange     '0.6.2',
-64 silly addNameRange     '0.6.3',
-64 silly addNameRange     '0.6.4',
-64 silly addNameRange     '0.6.5',
-64 silly addNameRange     '0.6.6',
-64 silly addNameRange     '0.6.7',
-64 silly addNameRange     '0.6.8',
-64 silly addNameRange     '0.7.0',
-64 silly addNameRange     '0.7.1',
-64 silly addNameRange     '0.8.0',
-64 silly addNameRange     '0.8.1',
-64 silly addNameRange     '0.8.2',
-64 silly addNameRange     '0.8.3',
-64 silly addNameRange     '0.8.4',
-64 silly addNameRange     '0.8.5',
-64 silly addNameRange     '0.8.6',
-64 silly addNameRange     '0.9.0',
-64 silly addNameRange     '0.9.1',
-64 silly addNameRange     '0.9.2',
-64 silly addNameRange     '0.10.0',
-64 silly addNameRange     '1.0.0',
-64 silly addNameRange     '1.0.1',
-64 silly addNameRange     '1.0.2',
-64 silly addNameRange     '1.0.3',
-64 silly addNameRange     '1.1.0',
-64 silly addNameRange     '1.1.1',
-64 silly addNameRange     '1.1.2',
-64 silly addNameRange     '1.2.0',
-64 silly addNameRange     '1.2.1',
-64 silly addNameRange     '1.2.2',
-64 silly addNameRange     '1.2.3',
-64 silly addNameRange     '1.2.4',
-64 silly addNameRange     '1.2.5',
-64 silly addNameRange     '1.2.6',
-64 silly addNameRange     '1.2.7',
-64 silly addNameRange     '1.2.8',
-64 silly addNameRange     '1.3.0',
-64 silly addNameRange     '1.3.1',
-64 silly addNameRange     '1.3.2',
-64 silly addNameRange     '1.3.3',
-64 silly addNameRange     '1.3.4',
-64 silly addNameRange     '1.3.5',
-64 silly addNameRange     '1.3.6',
-64 silly addNameRange     '1.3.7',
-64 silly addNameRange     '1.3.8',
-64 silly addNameRange     '1.3.9',
-64 silly addNameRange     '1.3.10',
-64 silly addNameRange     '1.3.11',
-64 silly addNameRange     '1.3.12' ] ]
-65 verbose addNamed [ 'bower', '1.3.12' ]
-66 verbose addNamed [ '1.3.12', '1.3.12' ]
-67 silly lockFile 9819431c-bower-1-3-12 bower@1.3.12
-68 verbose lock bower@1.3.12 /Users/iKerry/.npm/9819431c-bower-1-3-12.lock
-69 silly lockFile 9819431c-bower-1-3-12 bower@1.3.12
-70 silly lockFile 9819431c-bower-1-3-12 bower@1.3.12
-71 silly lockFile 1240aab1-bower bower@
-72 silly lockFile 1240aab1-bower bower@
-73 silly resolved [ { name: 'gulp',
-73 silly resolved     description: 'The streaming build system',
-73 silly resolved     version: '3.8.10',
-73 silly resolved     homepage: 'http://gulpjs.com',
-73 silly resolved     repository: { type: 'git', url: 'https://github.com/gulpjs/gulp' },
-73 silly resolved     author:
-73 silly resolved      { name: 'Fractal',
-73 silly resolved        email: 'contact@wearefractal.com',
-73 silly resolved        url: 'http://wearefractal.com/' },
-73 silly resolved     tags: [ 'build', 'stream', 'system', 'make', 'tool', 'asset', 'pipeline' ],
-73 silly resolved     files: [ 'index.js', 'lib', 'bin', 'completion' ],
-73 silly resolved     bin: { gulp: './bin/gulp.js' },
-73 silly resolved     man: [ 'gulp.1' ],
-73 silly resolved     dependencies:
-73 silly resolved      { archy: '^1.0.0',
-73 silly resolved        chalk: '^0.5.0',
-73 silly resolved        deprecated: '^0.0.1',
-73 silly resolved        'gulp-util': '^3.0.0',
-73 silly resolved        interpret: '^0.3.2',
-73 silly resolved        liftoff: '^0.13.2',
-73 silly resolved        minimist: '^1.1.0',
-73 silly resolved        orchestrator: '^0.3.0',
-73 silly resolved        'pretty-hrtime': '^0.2.0',
-73 silly resolved        semver: '^4.1.0',
-73 silly resolved        tildify: '^1.0.0',
-73 silly resolved        v8flags: '^1.0.1',
-73 silly resolved        'vinyl-fs': '^0.3.0' },
-73 silly resolved     devDependencies:
-73 silly resolved      { coveralls: '^2.7.0',
-73 silly resolved        'graceful-fs': '^3.0.0',
-73 silly resolved        istanbul: '^0.3.0',
-73 silly resolved        jshint: '^2.5.0',
-73 silly resolved        'jshint-stylish': '^1.0.0',
-73 silly resolved        'marked-man': '^0.1.3',
-73 silly resolved        mkdirp: '^0.5.0',
-73 silly resolved        mocha: '^2.0.1',
-73 silly resolved        'mocha-lcov-reporter': '^0.0.1',
-73 silly resolved        q: '^1.0.0',
-73 silly resolved        rimraf: '^2.2.5',
-73 silly resolved        should: '^4.0.0' },
-73 silly resolved     scripts:
-73 silly resolved      { prepublish: 'marked-man --name gulp docs/CLI.md > gulp.1',
-73 silly resolved        lint: 'jshint lib bin index.js --reporter node_modules/jshint-stylish/stylish.js --exclude node_modules',
-73 silly resolved        test: 'npm run-script lint && mocha --reporter spec',
-73 silly resolved        coveralls: 'istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage' },
-73 silly resolved     engineStrict: true,
-73 silly resolved     engines: { node: '>= 0.9' },
-73 silly resolved     licenses: [ [Object] ],
-73 silly resolved     gitHead: '0203bccdc7397991da68ea3e51fef7b2df75a46f',
-73 silly resolved     bugs: { url: 'https://github.com/gulpjs/gulp/issues' },
-73 silly resolved     _id: 'gulp@3.8.10',
-73 silly resolved     _shasum: 'bfb8fc156be97820f02a7f8b3af61a86666f9e31',
-73 silly resolved     _from: 'gulp@',
-73 silly resolved     _npmVersion: '2.1.6',
-73 silly resolved     _nodeVersion: '0.10.33',
-73 silly resolved     _npmUser: { name: 'fractal', email: 'contact@wearefractal.com' },
-73 silly resolved     maintainers: [ [Object] ],
-73 silly resolved     dist:
-73 silly resolved      { shasum: 'bfb8fc156be97820f02a7f8b3af61a86666f9e31',
-73 silly resolved        tarball: 'http://registry.npmjs.org/gulp/-/gulp-3.8.10.tgz' },
-73 silly resolved     directories: {},
-73 silly resolved     _resolved: 'https://registry.npmjs.org/gulp/-/gulp-3.8.10.tgz',
-73 silly resolved     readme: 'ERROR: No README data found!' },
-73 silly resolved   { name: 'bower',
-73 silly resolved     version: '1.3.12',
-73 silly resolved     description: 'The browser package manager',
-73 silly resolved     author: { name: 'Twitter' },
-73 silly resolved     licenses: [ [Object] ],
-73 silly resolved     repository: { type: 'git', url: 'https://github.com/bower/bower' },
-73 silly resolved     main: 'lib',
-73 silly resolved     homepage: 'http://bower.io',
-73 silly resolved     engines: { node: '>=0.10.0' },
-73 silly resolved     dependencies:
-73 silly resolved      { abbrev: '~1.0.4',
-73 silly resolved        archy: '0.0.2',
-73 silly resolved        'bower-config': '~0.5.2',
-73 silly resolved        'bower-endpoint-parser': '~0.2.2',
-73 silly resolved        'bower-json': '~0.4.0',
-73 silly resolved        'bower-logger': '~0.2.2',
-73 silly resolved        'bower-registry-client': '~0.2.0',
-73 silly resolved        cardinal: '0.4.0',
-73 silly resolved        chalk: '0.5.0',
-73 silly resolved        chmodr: '0.1.0',
-73 silly resolved        'decompress-zip': '0.0.8',
-73 silly resolved        fstream: '~1.0.2',
-73 silly resolved        'fstream-ignore': '~1.0.1',
-73 silly resolved        glob: '~4.0.2',
-73 silly resolved        'graceful-fs': '~3.0.1',
-73 silly resolved        handlebars: '~2.0.0',
-73 silly resolved        inquirer: '0.7.1',
-73 silly resolved        insight: '0.4.3',
-73 silly resolved        'is-root': '~1.0.0',
-73 silly resolved        junk: '~1.0.0',
-73 silly resolved        lockfile: '~1.0.0',
-73 silly resolved        'lru-cache': '~2.5.0',
-73 silly resolved        mkdirp: '0.5.0',
-73 silly resolved        mout: '~0.9.0',
-73 silly resolved        nopt: '~3.0.0',
-73 silly resolved        opn: '~1.0.0',
-73 silly resolved        osenv: '0.1.0',
-73 silly resolved        'p-throttler': '0.1.0',
-73 silly resolved        promptly: '0.2.0',
-73 silly resolved        q: '~1.0.1',
-73 silly resolved        request: '~2.42.0',
-73 silly resolved        'request-progress': '0.3.0',
-73 silly resolved        retry: '0.6.0',
-73 silly resolved        rimraf: '~2.2.0',
-73 silly resolved        semver: '~2.3.0',
-73 silly resolved        'shell-quote': '~1.4.1',
-73 silly resolved        'stringify-object': '~1.0.0',
-73 silly resolved        'tar-fs': '0.5.2',
-73 silly resolved        tmp: '0.0.23',
-73 silly resolved        'update-notifier': '0.2.0',
-73 silly resolved        which: '~1.0.5' },
-73 silly resolved     devDependencies:
-73 silly resolved      { coveralls: '~2.11.0',
-73 silly resolved        'expect.js': '~0.3.1',
-73 silly resolved        grunt: '~0.4.4',
-73 silly resolved        'grunt-cli': '^0.1.13',
-73 silly resolved        'grunt-contrib-jshint': '~0.10.0',
-73 silly resolved        'grunt-contrib-watch': '~0.6.1',
-73 silly resolved        'grunt-exec': '~0.4.2',
-73 silly resolved        'grunt-simple-mocha': '~0.4.0',
-73 silly resolved        istanbul: '~0.3.2',
-73 silly resolved        'load-grunt-tasks': '~0.6.0',
-73 silly resolved        mocha: '~1.21.4',
-73 silly resolved        nock: '~0.46.0',
-73 silly resolved        'node-uuid': '~1.4.1',
-73 silly resolved        proxyquire: '~1.0.1' },
-73 silly resolved     scripts: { test: 'grunt test' },
-73 silly resolved     bin: { bower: 'bin/bower' },
-73 silly resolved     preferGlobal: true,
-73 silly resolved     gitHead: 'b26c072f0db054a1902ec4d2e3726dbf8a1c799a',
-73 silly resolved     bugs: { url: 'https://github.com/bower/bower/issues' },
-73 silly resolved     _id: 'bower@1.3.12',
-73 silly resolved     _shasum: '37de0edb3904baf90aee13384a1a379a05ee214c',
-73 silly resolved     _from: 'bower@',
-73 silly resolved     _npmVersion: '2.0.0',
-73 silly resolved     _npmUser: { name: 'sheerun', email: 'sheerun@sher.pl' },
-73 silly resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object], [Object] ],
-73 silly resolved     dist:
-73 silly resolved      { shasum: '37de0edb3904baf90aee13384a1a379a05ee214c',
-73 silly resolved        tarball: 'http://registry.npmjs.org/bower/-/bower-1.3.12.tgz' },
-73 silly resolved     directories: {},
-73 silly resolved     _resolved: 'https://registry.npmjs.org/bower/-/bower-1.3.12.tgz',
-73 silly resolved     readme: 'ERROR: No README data found!' } ]
-74 info install gulp@3.8.10 into /usr/local/lib
-75 info install bower@1.3.12 into /usr/local/lib
-76 info installOne gulp@3.8.10
-77 info installOne bower@1.3.12
-78 verbose lib/node_modules/gulp unbuild
-79 verbose lib/node_modules/bower unbuild
-80 verbose tar unpack /Users/iKerry/.npm/gulp/3.8.10/package.tgz
-81 silly lockFile f8641481--usr-local-lib-node-modules-gulp tar:///usr/local/lib/node_modules/gulp
-82 verbose lock tar:///usr/local/lib/node_modules/gulp /Users/iKerry/.npm/f8641481--usr-local-lib-node-modules-gulp.lock
-83 silly lockFile 31e02fd9-erry-npm-gulp-3-8-10-package-tgz tar:///Users/iKerry/.npm/gulp/3.8.10/package.tgz
-84 verbose lock tar:///Users/iKerry/.npm/gulp/3.8.10/package.tgz /Users/iKerry/.npm/31e02fd9-erry-npm-gulp-3-8-10-package-tgz.lock
-85 verbose tar unpack /Users/iKerry/.npm/bower/1.3.12/package.tgz
-86 silly lockFile 1396471b-usr-local-lib-node-modules-bower tar:///usr/local/lib/node_modules/bower
-87 verbose lock tar:///usr/local/lib/node_modules/bower /Users/iKerry/.npm/1396471b-usr-local-lib-node-modules-bower.lock
-88 silly lockFile aab7c8a9-rry-npm-bower-1-3-12-package-tgz tar:///Users/iKerry/.npm/bower/1.3.12/package.tgz
-89 verbose lock tar:///Users/iKerry/.npm/bower/1.3.12/package.tgz /Users/iKerry/.npm/aab7c8a9-rry-npm-bower-1-3-12-package-tgz.lock
-90 silly gunzTarPerm modes [ '755', '644' ]
-91 silly gunzTarPerm modes [ '755', '644' ]
-92 error Error: EACCES, mkdir '/usr/local/lib/node_modules/gulp'
-92 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/gulp']
-92 error   errno: 3,
-92 error   code: 'EACCES',
-92 error   path: '/usr/local/lib/node_modules/gulp',
-92 error   fstream_type: 'Directory',
-92 error   fstream_path: '/usr/local/lib/node_modules/gulp',
-92 error   fstream_class: 'DirWriter',
-92 error   fstream_stack:
-92 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
-92 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
-92 error      'Object.oncomplete (fs.js:107:15)' ] }
-93 error Please try running this command again as root/Administrator.
-94 error System Darwin 14.0.0
-95 error command "node" "/usr/local/bin/npm" "install" "bower" "gulp" "-g"
-96 error cwd /Users/iKerry/Works/online-ppt
-97 error node -v v0.10.33
-98 error npm -v 1.4.28
-99 error path /usr/local/lib/node_modules/gulp
-100 error fstream_path /usr/local/lib/node_modules/gulp
-101 error fstream_type Directory
-102 error fstream_class DirWriter
-103 error code EACCES
-104 error errno 3
-105 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/gulp'
-106 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
-106 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
-106 error fstream_stack Object.oncomplete (fs.js:107:15)
-107 verbose exit [ 3, true ]
+6 verbose parsed url   pathname: 'generator-backbone-gulp-fullstack',
+6 verbose parsed url   path: 'generator-backbone-gulp-fullstack',
+6 verbose parsed url   href: 'generator-backbone-gulp-fullstack' }
+7 silly lockFile 317d37fd-enerator-backbone-gulp-fullstack generator-backbone-gulp-fullstack
+8 verbose lock generator-backbone-gulp-fullstack /Users/twer/.npm/317d37fd-enerator-backbone-gulp-fullstack.lock
+9 silly lockFile 317d37fd-enerator-backbone-gulp-fullstack generator-backbone-gulp-fullstack
+10 silly lockFile 317d37fd-enerator-backbone-gulp-fullstack generator-backbone-gulp-fullstack
+11 verbose addNamed [ 'generator-backbone-gulp-fullstack', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 71b09e08-enerator-backbone-gulp-fullstack generator-backbone-gulp-fullstack@
+14 verbose lock generator-backbone-gulp-fullstack@ /Users/twer/.npm/71b09e08-enerator-backbone-gulp-fullstack.lock
+15 silly addNameRange { name: 'generator-backbone-gulp-fullstack',
+15 silly addNameRange   range: '*',
+15 silly addNameRange   hasData: false }
+16 verbose request where is /generator-backbone-gulp-fullstack
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 8314b1e231dfe706
+19 verbose url raw /generator-backbone-gulp-fullstack
+20 verbose url resolving [ 'https://registry.npmjs.org/',
+20 verbose url resolving   './generator-backbone-gulp-fullstack' ]
+21 verbose url resolved https://registry.npmjs.org/generator-backbone-gulp-fullstack
+22 verbose request where is https://registry.npmjs.org/generator-backbone-gulp-fullstack
+23 info trying registry request attempt 1 at 18:22:04
+24 http GET https://registry.npmjs.org/generator-backbone-gulp-fullstack
+25 http 404 https://registry.npmjs.org/generator-backbone-gulp-fullstack
+26 verbose headers { date: 'Mon, 17 Nov 2014 10:22:07 GMT',
+26 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 verbose headers   'content-type': 'application/json',
+26 verbose headers   'cache-control': 'max-age=0',
+26 verbose headers   'content-length': '52',
+26 verbose headers   'accept-ranges': 'bytes',
+26 verbose headers   via: '1.1 varnish',
+26 verbose headers   age: '0',
+26 verbose headers   'x-served-by': 'cache-dfw1830-DFW',
+26 verbose headers   'x-cache': 'MISS',
+26 verbose headers   'x-cache-hits': '0',
+26 verbose headers   'x-timer': 'S1416219727.533565,VS0,VE189',
+26 verbose headers   'keep-alive': 'timeout=10, max=50',
+26 verbose headers   connection: 'Keep-Alive' }
+27 silly registry.get cb [ 404,
+27 silly registry.get   { date: 'Mon, 17 Nov 2014 10:22:07 GMT',
+27 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=0',
+27 silly registry.get     'content-length': '52',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '0',
+27 silly registry.get     'x-served-by': 'cache-dfw1830-DFW',
+27 silly registry.get     'x-cache': 'MISS',
+27 silly registry.get     'x-cache-hits': '0',
+27 silly registry.get     'x-timer': 'S1416219727.533565,VS0,VE189',
+27 silly registry.get     'keep-alive': 'timeout=10, max=50',
+27 silly registry.get     connection: 'Keep-Alive' } ]
+28 silly lockFile 71b09e08-enerator-backbone-gulp-fullstack generator-backbone-gulp-fullstack@
+29 silly lockFile 71b09e08-enerator-backbone-gulp-fullstack generator-backbone-gulp-fullstack@
+30 error 404 404 Not Found: generator-backbone-gulp-fullstack
+30 error 404
+30 error 404 'generator-backbone-gulp-fullstack' is not in the npm registry.
+30 error 404 You should bug the author to publish it
+30 error 404
+30 error 404 Note that you can also install from a
+30 error 404 tarball, folder, or http url, or git url.
+31 error System Darwin 14.0.0
+32 error command "node" "/usr/local/bin/npm" "install" "-g" "generator-backbone-gulp-fullstack"
+33 error cwd /Users/twer/Works/online-ppt
+34 error node -v v0.10.33
+35 error npm -v 1.4.28
+36 error code E404
+37 verbose exit [ 1, true ]
