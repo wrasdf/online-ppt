@@ -133,8 +133,10 @@ gulp.task('watch', function () {
     gulp.watch([
         'app/*.html',
         '.tmp/styles/**/*.css',
-        'app/scripts/**/*.js',
-        'app/images/**/*'
+        'app/desktop/scripts/**/*.js',
+        'app/mobile/scripts/**/*.js',
+        'app/desktop/images/**/*',
+        'app/mobile/images/**/*'
     ]).on('change', function (file) {
         server.changed(file.path);
     });
