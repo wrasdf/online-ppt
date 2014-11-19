@@ -29,21 +29,26 @@ App.module("SidebarModule", function(){
 	var navItemModel = Backbone.Model.extend({});
 	var navCollectionModel = Backbone.Collection.extend({
 		model: navItemModel
-	});
+	});	
 
-
-	var data = new navCollectionModel([
+	this.init = function(){
+		var data = new navCollectionModel([
 			new navItemModel({name: "test1", age: "asdfsd1"}),
 			new navItemModel({name: "test2", age: "asdfsd2"}),
 			new navItemModel({name: "test3", age: "asdfsd3"})
-	]);
+		]);
+		// $.ajax(path, function(o){
+		AppLayoutView.nav.show(new navCollectionView({
+			collection: data
+		}));
+		// })
+		
+	}
 
 	this.addInitializer(function(){
 		self.test.test();
 		self.data.data();
-		AppLayoutView.nav.show(new navCollectionView({
-			collection: data
-		}));
+		this.init();
 	});
 
 });
