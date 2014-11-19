@@ -1,12 +1,23 @@
 "use strict";
 
 var App = new Backbone.Marionette.Application();
+var EventBus = new Backbone.Wreqr.EventAggregator();
+
+var layoutView = Backbone.Marionette.LayoutView.extend({
+	  template: "#layout-view-template",
+	  regions: {
+	    nav: "#nav",
+	    dashboard: "#dashboard"
+	  }
+	});
+
+var AppLayoutView;
 
 App.addRegions({
 	mainRegion: ".wrapper"
 });
 
-// how to make it execute ???
+// how to make it execute ?
 // App.on('initialize:before', function(options) {
 // 	console.log("before Initialization");
 // });
@@ -20,63 +31,71 @@ App.on('start', function(options) {
 });
 
 
-App.collections = {};
-App.models = {};
-App.views = {};
-App.layouts = {};
+App.module("AppLayoutModule", function(){
 
+	this.init = function(){
+		App.mainRegion.show(AppLayoutView);
+	}
 
-App.layouts.rootView = Backbone.Marionette.LayoutView.extend({
-  template: "#layout-view-template",
-  regions: {
-    nav: "#nav",
-    dashboard: "#dashboard"
-  }
 });
 
 
-App.views.navItemView = Backbone.Marionette.ItemView.extend({
-	template: "#nav-item-view",
-	tagName: 'li'
+App.module("SidebarModule", function(){
+
+	var navItemView = Backbone.Marionette.ItemView.extend({
+		template: "#nav-item-view",
+		tagName: 'li'
+	});
+	
+	var navCollectionView = Backbone.Marionette.CompositeView.extend({
+		template: "#nav-collection-view",
+		childView: navItemView,
+		childViewContainer: "ul"
+	});
+
+	var navItemModel = Backbone.Model.extend({});
+	var navCollectionModel = Backbone.Collection.extend({
+		model: navItemModel
+	});
+
+
+	var data = new navCollectionModel([
+			new navItemModel({name: "test1", age: "asdfsd1"}),
+			new navItemModel({name: "test2", age: "asdfsd2"}),
+			new navItemModel({name: "test3", age: "asdfsd3"})
+	]);
+
+	this.init = function(){
+		AppLayoutView.nav.show(new navCollectionView({
+			collection: data
+		}));
+	}
+
+});
+
+App.module("SidebarModule.view", function(){
+	this.test = function(){
+		console.log("sidebar submodule test");
+	}
 });
 
 
-App.views.navCollectionView = Backbone.Marionette.CompositeView.extend({
-	template: "#nav-collection-view",
-	childView: App.views.navItemView,
-	childViewContainer: "ul"
+App.module("SidebarModule.data", function(){
+	this.data = function(){
+		console.log("sidebar submodule data");
+	}
 });
-
-App.models.navItem = Backbone.Model.extend({});
-
-App.collections.navCollection = Backbone.Collection.extend({
-	model: App.models.navItem
-});
-
 
 $(function(){
 
+	AppLayoutView = new layoutView();
 	App.addInitializer(function(options){
-
-		var AppLayoutView = new App.layouts.rootView(); 
-		App.mainRegion.show(AppLayoutView);
-
-		AppLayoutView.nav.show(new App.views.navCollectionView({
-			collection: options.navCollection
-		}));
-
+		App.module("AppLayoutModule").init();
+		App.module("SidebarModule").init();
 	});
 
-	var appViewNavCollection = new App.collections.navCollection([
-				new App.models.navItem({name: "test1", age: "asdfsd1"}),
-				new App.models.navItem({name: "test2", age: "asdfsd2"}),
-				new App.models.navItem({name: "test3", age: "asdfsd3"})
-		]);
+	App.start();
 
-	App.start({
-		navCollection : appViewNavCollection
-	});
-	
 });
 
 
