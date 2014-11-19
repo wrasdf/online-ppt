@@ -30,10 +30,9 @@
         </script>
 
         <script id="nav-item-view" type="text/template">
-                <%= name %>
-                <%= age %>
-        </script
-
+            <%= name %>
+            <%= age %>
+        </script>
 
         <!-- build:js scripts/edit-vendor.js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -46,7 +45,10 @@
         <!-- endbuild -->
         
         <!-- build:js scripts/main.js -->
-        <script src="./scripts/edit.js"></script>
+        <script src="./scripts/global.js"></script>
+        <script src="./scripts/layout-module.js"></script>
+        <script src="./scripts/sidebar-module.js"></script>
+        <script src="./scripts/main.js"></script>
         <!-- endbuild -->
 </body>
 </html>
