@@ -21,18 +21,30 @@
             <header></header>
             <section class="content">
                 <nav id="nav"></nav>
-                <section id="dashboard"></section>
+                <section id="dashboard">
+                    
+                </section>
             </section>
         </script>
 
         <script id="nav-collection-view" type="text/template">
-            <ul></ul><i>asdfasafasfa</i><b>afasfdf af as</b>
+            <ul></ul>
         </script>
 
         <script id="nav-item-view" type="text/template">
-            <%= name %>
-            <%= age %>
+            <h3><%= title %></h3>
+            <p><%= description %></p>            
         </script>
+
+        <script id="dashboard-item-view" type="text/template">
+            <div class="mobile-wrapper">
+                <input class="title-input" type="text" placeholder="Please input title" value="<%= title %>" />
+                <textarea class="description-input" placeholder="Please input description" value="<%= description %>"></textarea>
+            </div>
+            <input class="save" value="save" />            
+        </script>
+
+
 
         <!-- build:js scripts/edit-vendor.js -->
         <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -48,6 +60,7 @@
         <script src="./scripts/global.js"></script>
         <script src="./scripts/layout-module.js"></script>
         <script src="./scripts/sidebar-module.js"></script>
+        <script src="./scripts/dashboard-module.js"></script>
         <script src="./scripts/main.js"></script>
         <!-- endbuild -->
 </body>

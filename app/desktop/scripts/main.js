@@ -14,6 +14,7 @@ $(function(){
 	App.addInitializer(function(options){
 		App.module("AppLayoutModule").start();
 		App.module("SidebarModule").start();
+		App.module("DashboardModule").start();		
 	});
 	App.start();
 });

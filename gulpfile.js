@@ -192,7 +192,7 @@ gulp.task('build', function(){
 
 gulp.task('serve', function () {
     runSequence('clean', 'styles', 'connect', 'watch', function(){
-        require('opn')('http://localhost:9000/mobile/');    
+        require('opn')('http://localhost:9000/desktop/edit.html');    
     });
 });
 
