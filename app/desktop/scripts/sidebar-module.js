@@ -4,7 +4,13 @@ App.module("SidebarModule", function(){
 
 	var navItemView = Backbone.Marionette.ItemView.extend({
 		template: "#nav-item-view",
-		tagName: 'li'
+		tagName: 'li',
+		events : {
+			'click': 'changeDashboardContent'
+		},
+		changeDashboardContent: function(){
+			EventBus.trigger("dashboardContentUpdataByModel", this.model);
+		}
 	});
 	
 	var navCollectionView = Backbone.Marionette.CompositeView.extend({
@@ -14,12 +20,14 @@ App.module("SidebarModule", function(){
 		collectionEvents: {
 			"change": "render"
 		}
+		
 	});
 
 	var navItemModel = Backbone.Model.extend({
 		default: {
-			title: "title1", 
-			description: "asdfsd1"
+			title: "title1",
+			description: "asdfsd1",
+			index: 0
 		}
 	});
 	var navCollection = Backbone.Collection.extend({
@@ -30,20 +38,20 @@ App.module("SidebarModule", function(){
 
 	EventBus.on("navModelUpdate", function(data){		
 		var updateModel = navCollectionInstance.at(data.index).set({
-			title : data.model.title,
-			description: data.model.description
+			index : data.index,
+			title : data.title,
+			description: data.description
 		});
 	});
 
 	this.addInitializer(function(){
-		navCollectionInstance.add(new navItemModel({title: "title1", description: "asdfsd1"}));
-		navCollectionInstance.add(new navItemModel({title: "title2", description: "asdfsd1"}));
-		navCollectionInstance.add(new navItemModel({title: "title3", description: "asdfsd1"}));
+		$.each(pptData, function(i, item){
+			navCollectionInstance.add(new navItemModel($.extend(item, {index: i})));
+		});
 		AppLayoutView.nav.show(new navCollectionView({
 			collection: navCollectionInstance
 		}));		
 	});
-
 });
 
 // App.module("SidebarModule").on("before:start", function(){

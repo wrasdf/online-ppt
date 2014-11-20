@@ -1,14 +1,5 @@
 "use strict";
 
-// how to make it execute ?
-// App.on('initialize:before', function(options) {
-// 	console.log("before Initialization");
-// });
-
-// App.on('initialize:after', function(options) {
-// 	console.log('Initialization Finished');
-// });
-
 $(function(){
 	AppLayoutView = new layoutView();
 	App.addInitializer(function(options){

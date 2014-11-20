@@ -18,3 +18,9 @@ App.addRegions({
 App.on('start', function(options) {
   	Backbone.history.start({pushState: true});
 });
+
+var pptData = [
+	{title: "title1", description: "description1"},
+	{title: "title2", description: "description2"},
+	{title: "title3", description: "description3"}
+];
