@@ -9,7 +9,10 @@ App.module("SidebarModule", function(){
 			'click': 'changeDashboardContent'
 		},
 		changeDashboardContent: function(){
-			EventBus.trigger("dashboardContentUpdataByModel", this.model);
+			EventBus.trigger("dashboardContentUpdataByModel", {
+				index: navCollectionInstance.indexOf(this.model),
+				model : this.model
+			});
 		}
 	});
 	
@@ -38,15 +41,14 @@ App.module("SidebarModule", function(){
 
 	EventBus.on("navModelUpdate", function(data){		
 		var updateModel = navCollectionInstance.at(data.index).set({
-			index : data.index,
-			title : data.title,
-			description: data.description
+			title : data.model.get("title"),
+			description: data.model.get("description")
 		});
 	});
 
 	this.addInitializer(function(){
 		$.each(pptData, function(i, item){
-			navCollectionInstance.add(new navItemModel($.extend(item, {index: i})));
+			navCollectionInstance.add(new navItemModel(item));
 		});
 		AppLayoutView.nav.show(new navCollectionView({
 			collection: navCollectionInstance

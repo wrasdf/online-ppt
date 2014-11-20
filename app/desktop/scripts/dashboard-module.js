@@ -7,13 +7,13 @@ App.module("DashboardModule", function(){
 			index: 0 			
         }
 	});
-	var dashboardModel;
+	var dashboardModel, currentModelIndex;
 
-	EventBus.on("dashboardContentUpdataByModel", function(model){
+	EventBus.on("dashboardContentUpdataByModel", function(data){
+		currentModelIndex = data.index;
 		dashboardModel.set({
-			title: model.get("title"),
-			description: model.get("description"),
-			index: model.get("index")
+			title: data.model.get("title"),
+			description: data.model.get("description")
 		});
 	})
 
@@ -27,11 +27,17 @@ App.module("DashboardModule", function(){
 		    'click .save': 'clickedButton'
 		},
 		clickedButton: function(){
-			EventBus.trigger("navModelUpdate", {
-				index: this.model.get("index"),
+
+			dashboardModel.set({
 				title: $(".title-input").val(),
 				description: $(".description-input").val()
 			});
+
+			EventBus.trigger("navModelUpdate", {
+				index: currentModelIndex,
+				model: this.model
+			});
+			
 		}
 	});	
 
