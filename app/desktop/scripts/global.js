@@ -1,11 +1,14 @@
 var App = new Backbone.Marionette.Application();
 var EventBus = new Backbone.Wreqr.EventAggregator();
+var router = Backbone.Marionette.AppRouter.extend({});
+App.Router = new router();
 
 var layoutView = Backbone.Marionette.LayoutView.extend({
 	  template: "#layout-view-template",
 	  regions: {
 	    nav: "#nav",
-	    dashboard: "#dashboard"
+	    dashboard: "#dashboard",
+	    loginContent: "#login-content"
 	  }
 	});
 
@@ -16,7 +19,7 @@ App.addRegions({
 });
 
 App.on('start', function(options) {
-  	Backbone.history.start({pushState: true});
+  	Backbone.history.start();
 });
 
 var pptData = [
